@@ -1,27 +1,17 @@
 import React, { useState } from 'react'
+
 import Exponent from './Exponent'
 import Fraction from './Fraction'
 import PlusSign from './PlusSign'
-import styled from 'styled-components'
+import Symbol from './Symbol'
 
-const Number = styled.div`
-  :hover {
-    background-color: pink;
-  }
-`
 
 const Expression = ({ expression }) => {
   const [active, setActive] = useState(false)
   const { operator, operands, variable, number } = expression
 
-  if (variable) {
-    return <Number>
-        {`${variable}`}</Number>
-  }
-
-  if (number) {
-    return <Number>
-        {`${number}`}</Number>
+  if (variable || number) {
+    return <Symbol symbol={`${variable || number}`}/>
   }
 
   if (operator === "quotient") {
