@@ -13,13 +13,31 @@ const prod_1 = {
   ]
 }
 
-const data = {
+const prod_2 = {
   operator: "product",
+  operands: [{ variable:"x" }, { variable: "y"}]
+}
+
+const quot_1 = {
+  operator: "quotient",
+  operands: {
+    numerator: { number: 1 },
+    denominator: prod_2
+  }
+}
+
+const exp_1 = {
+  operator: "exponent",
+  operands: {
+    base: { variable: "e" },
+    exponent: { variable: "x" }
+  }
+}
+
+const data = {
+  operator: "sum",
   operands: [
-    { number: 2 }, 
-    { variable: "a" }, 
-    { variable: "b" }, 
-    { variable: "c" }
+    prod_1, {variable: "x"}, quot_1, prod_2, exp_1
   ]
 }
 
@@ -32,8 +50,16 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <Expression expression={data}/>
+      <main className={styles.main} >
+        <div 
+          style={{
+            fontSize:"4em"
+          }}
+        >
+        
+          <Expression expression={data}/>
+
+        </div>
       </main>
 
       <footer className={styles.footer}>
