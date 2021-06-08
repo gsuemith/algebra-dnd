@@ -2,28 +2,26 @@ import React, { useState } from 'react'
 import Exponent from './Exponent'
 import Fraction from './Fraction'
 import PlusSign from './PlusSign'
+import styled from 'styled-components'
 
+const Number = styled.div`
+  :hover {
+    background-color: pink;
+  }
+`
 
 const Expression = ({ expression }) => {
   const [active, setActive] = useState(false)
   const { operator, operands, variable, number } = expression
 
   if (variable) {
-    return <div 
-      style={{backgroundColor:`${active ? "pink":"None"}`}}
-      onMouseEnter={() => setActive(true)}
-      onMouseLeave={() => setActive(false)}
-      >
-        {`${variable}`}</div>
+    return <Number>
+        {`${variable}`}</Number>
   }
 
   if (number) {
-    return <div 
-      style={{backgroundColor:`${active ? "pink":"None"}`}}
-      onMouseEnter={() => setActive(true)}
-      onMouseLeave={() => setActive(false)}
-      >
-        {`${number}`}</div>
+    return <Number>
+        {`${number}`}</Number>
   }
 
   if (operator === "quotient") {
