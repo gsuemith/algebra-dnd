@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import Exponent from './Exponent'
 import Fraction from './Fraction'
@@ -7,7 +7,6 @@ import Symbol from './Symbol'
 
 
 const Expression = ({ expression }) => {
-  const [active, setActive] = useState(false)
   const { operator, operands, variable, number } = expression
 
   if (variable || number) {
