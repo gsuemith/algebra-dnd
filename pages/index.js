@@ -1,3 +1,5 @@
+import { DragDropContext, Droppable } from 'react-beautiful-dnd'
+
 import Head from 'next/head'
 import Image from 'next/image'
 import Expression from '../components/Expression'
@@ -51,15 +53,24 @@ export default function Home() {
       </Head>
 
       <main className={styles.main} >
-        <div 
-          style={{
-            fontSize:"4em"
-          }}
-        >
-        
-          <Expression expression={data}/>
+        <DragDropContext>
+          <Droppable droppableId="symbols">
+            {
+              (provided) => (
+              <ul 
+                style={{fontSize:"4em"}}
+                { ...provided.droppableProps }
+                ref={provided.innerRef}
+              >
+              
+                <Expression expression={data}/>
 
-        </div>
+              </ul>
+              )
+            }
+          </Droppable>
+          
+        </DragDropContext>
       </main>
 
       <footer className={styles.footer}>
