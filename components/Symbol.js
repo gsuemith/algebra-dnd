@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Number = styled.div`
+const Number = styled.li`
+  list-style-type: None;
   :hover {
     background-color: pink;
   }
