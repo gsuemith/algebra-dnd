@@ -57,7 +57,7 @@ export default function Home() {
           <Droppable droppableId="symbols">
             {
               (provided) => (
-              <ul 
+              <div 
                 style={{fontSize:"4em"}}
                 { ...provided.droppableProps }
                 ref={provided.innerRef}
@@ -65,7 +65,7 @@ export default function Home() {
               
                 <Expression expression={data}/>
 
-              </ul>
+              </div>
               )
             }
           </Droppable>

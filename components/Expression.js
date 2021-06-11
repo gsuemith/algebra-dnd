@@ -6,11 +6,11 @@ import PlusSign from './PlusSign'
 import Symbol from './Symbol'
 
 
-const Expression = ({ expression }) => {
+const Expression = ({ expression, id }) => {
   const { operator, operands, variable, number } = expression
 
   if (variable || number) {
-    return <Symbol symbol={`${variable || number}`}/>
+    return <Symbol symbol={`${variable || number}`} id={id}/>
   }
 
   if (operator === "quotient") {
@@ -26,10 +26,13 @@ const Expression = ({ expression }) => {
       {
         operands.map((expression, idx) => (
         <>
-          <div style={{cursor:"pointer"}}>
-            <Expression expression={expression}/>
+          <div 
+            // style={{cursor:"pointer"}} 
+            key={id**(idx+1)}
+          >
+            <Expression expression={expression} id={id**(idx+1)}/>
           </div>
-          { (operator === "sum" && idx < operands.length - 1) && <PlusSign />}
+          { (operator === "sum" && idx < operands.length - 1) && <PlusSign key={`${idx}+`}/>}
         </>
         ))
       }
